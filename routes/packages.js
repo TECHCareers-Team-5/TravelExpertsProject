@@ -22,4 +22,19 @@ router.get("/:pkgId", (req, res, next) => {
   });
 });
 
+router.get("/:pkgId/cart", (req, res, next) => {
+  console.log("POINT A");
+  const pkgId = req.params.pkgId;
+  const query = { PackageId: pkgId };
+  console.log(query);
+  console.log(pkgId);
+  Package.findOne(query, (err, package) => {
+    if (err) {
+      console.log(err);
+      next(err);
+    }
+    res.render("cart", { package });
+  });
+});
+
 module.exports = router;
