@@ -1,0 +1,30 @@
+extends template 
+block content
+
+  h1.header Your Journey Begins Here
+  img(src='./Images/Globe blue on transparent.png')
+  div
+    h2 Login
+
+    h3 #{msg} #{fname} #{lname} #{msg2}
+
+    form(action='/login' method='POST')
+        div
+            label(for='CustHomePhone') Primary Phone Number
+            hr
+            input(style='width:30%' type='text' name='CustHomePhone' id='CustHomePhone' placeholder='Without "-" ' required='')
+        div
+            label(for='password') Password
+            hr
+            input#password(style='width:30%' type='password' name='password' required='' placeholder='Enter Password')
+        div
+            button.button(type='submit' style='width:30%' ) SUBMIT
+    
+    h3 New to Travel Experts?
+        div 
+            a(href='/login/signup')
+                button.button Sign Up
+            
+
+
+    
