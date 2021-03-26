@@ -4,6 +4,11 @@ block content
     h1.header Register
     img(src='/Images/Globe blue on transparent.png')
     div
+      if errors 
+        ul 
+          each error in errors 
+            li= error
+    div
       #register
         h1 Your Journey Begins Here
         form(action='/login/signup' method='POST')
