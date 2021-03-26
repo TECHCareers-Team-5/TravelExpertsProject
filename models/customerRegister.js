@@ -74,6 +74,7 @@ const customersSchema = new mongoose.Schema({
       },
       message: (props) => `${props.value} is not a valid Email address.`,
     },
+    unique: true,
   },
   password: {
     type: String,
@@ -85,6 +86,7 @@ const customersSchema = new mongoose.Schema({
     type: Number,
   },
 });
-
+// require unique validator
+customersSchema.plugin(uniqueValidator);
 // create a model Customers useing customersSchema
 module.exports.Customer = mongoose.model("Customer", customersSchema);

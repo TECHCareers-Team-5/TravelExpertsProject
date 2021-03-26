@@ -26,6 +26,16 @@ router.post("/signup", (req, res, next) => {
         errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
         return res.render("loginsignup", {
           errors: errorArray,
+          CustFirstName: req.body.CustFirstName,
+          CustLastName: req.body.CustLastName,
+          CustAddress: req.body.CustAddress,
+          CustCity: req.body.CustCity,
+          CustProv: req.body.CustProv,
+          CustPostal: req.body.CustPostal,
+          CustHomePhone: req.body.CustHomePhone,
+          CustBusPhone: req.body.CustBusPhone,
+          CustEmail: req.body.CustEmail,
+          AgentId: req.body.AgentId,
         });
       }
       console.log(result);
