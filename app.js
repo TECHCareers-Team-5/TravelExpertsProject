@@ -12,7 +12,7 @@ const app = express();
 // require("./my-passport").init(app);
 
 var indexRouter = require("./routes/index");
-// const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
 const packagesRouter = require("./routes/packages");
 // const agentRouter = require("./routes/agentrouter");
 // const suppliercontactsRouter = require("./routes/suppliercontacts");
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-// app.use("/register", registerRouter);
+app.use("/login", loginRouter);
 app.use("/packages", packagesRouter);
 // app.use("/agent", agentRouter);
 // app.use("/suppliercontacts", suppliercontactsRouter);

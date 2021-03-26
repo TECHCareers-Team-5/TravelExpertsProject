@@ -1,0 +1,55 @@
+extends template 
+block content
+
+    h1.header Register
+    img(src='/Images/Globe blue on transparent.png')
+    div
+      #register
+        h1 Your Journey Begins Here
+        form(action='/login/signup' method='POST')
+          div
+            label(for='CustFirstName') First Name
+            br
+            input(style='width:30%' type='text' name='CustFirstName' id='CustFirstName' placeholder='First Name' required='')
+          div
+            label(for='CustLastName') Last Name
+            br
+            input(style='width:30%' type='text' name='CustLastName' id='CustLastName' required='' placeholder='Last Name')
+          div
+            label(for='CustAddress') Street Address
+            br
+            input(style='width:30%' type='text' name='CustAddress' id='CustAddress' required='' placeholder='Street Address')
+          div
+            label(for='CustCity') City
+            br
+            input(style='width:30%' type='text' name='CustCity' id='CustCity' required='' placeholder='City')
+          div
+            label(for='CustProv') Province
+            br
+            input(style='width:30%' type='text' name='CustProv' id='CustProv' required='' placeholder='Province (Abreviation)')
+          div
+            label(for='CustPostal') Postal Code
+            br
+            input(style='width:30%' type='text' name='CustPostal' id='CustPostal' required='' placeholder='Postal Code')
+          div
+            label(for='CustHomePhone') Primary Phone Number
+            br
+            input(style='width:30%' type='text' name='CustHomePhone' id='CustHomePhone' placeholder='XXX-XXX-XXXX' required='')
+          div
+            label(for='CustBusPhone') Business Phone Number
+            br
+            input(style='width:30%' type='text' name='CustBusPhone' id='CustBusPhone' placeholder='XXX-XXX-XXXX')
+          div
+            label(for='CustEmail') Email
+            br
+            input#email(style='width:30%' type='CustEmail' name='CustEmail' required='' placeholder='Email Address')
+          div
+            label(for='password') Password
+            br
+            input#password(style='width:30%' type='password' name='password' required='' placeholder='Enter Password')
+          div
+            label(for='AgentId') Agent ID (Please leave blank if you are not an Agent)
+            br
+            input(style='width:30%' type='text' name='AgentId' id='AgentId' placeholder='00')
+          button.button(type='submit' style='width:30%') SUBMIT
+
