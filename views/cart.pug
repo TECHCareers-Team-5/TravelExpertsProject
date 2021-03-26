@@ -1,21 +1,14 @@
 extends packtemplate 
 block content 
 
-    h1= package.PkgName
-        div
-          img.packageImage(src='/Images/' + package.Img1 alt=package.PkgDesc)
-          img.packageImage(src='/Images/' + package.Img2 alt=package.PkgDesc)
-          img.packageImage(src='/Images/' + package.Img3 alt=package.PkgDesc)
+    h1 Cart
+    h2= package.PkgName
 
 
-    h2=package.PkgDesc
-    h3=package.PkgStartDate 
-    h3= package.PkgEndDate
     h2 $ #{package.PkgBasePrice}
     div
       br
-      div
-          a.button(href='/packages/' + package.PackageId + '/cart' ) Purchase
+
     
     //-   h2.header.description-header CART
     //-   .cart-row
