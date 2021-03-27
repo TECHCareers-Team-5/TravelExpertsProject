@@ -39,10 +39,10 @@ router.get("/:pkgId/cart", (req, res, next) => {
 
 router.get("/:cart/thankyou", (req, res, next) => {
   console.log("POINT A");
-  const pkgId = req.params.pkgId;
+  const pkgId = req.params.cart;
   const query = { PackageId: pkgId };
   console.log(query);
-  console.log(pkgId);
+  console.log(cart);
   Package.findOne(query, (err, package) => {
     if (err) {
       console.log(err);
