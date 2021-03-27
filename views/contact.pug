@@ -1,25 +1,10 @@
-doctype html
-head
-  title Contact
-  meta(name='description' content='This is the description')
-  link(rel='preconnect' href='https://fonts.gstatic.com')
-  link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,500&family=Raleway:ital,wght@0,100;0,400;0,700;1,100&display=swap')
-  link(rel='stylesheet' href='/stylesheets/styles.css')
-header
-  nav
-    ul.navbar
-      li
-        a(href='/') HOME
-      li
-        a(href='packages') PACKAGES
-      li
-        a(href='register') REGISTER
-      li.active
-        a(href='contact') CONTACT
+extends template 
+block content
+
   h1.header TRAVEL EXPERTS
 
   img(src='Images/Globe blue on transparent.png' alt='agentLogo')
-.contact-section
+  .contact-section
   .contact-calgary
     h3 CALGARY OFFICE
     p Address: 111 Calgary RD NW
@@ -133,6 +118,6 @@ header
       }
       }
     // <img width="55%" src="Images/Office Placeholder 2.png" />
-footer.main-footer
+  footer.main-footer
   div
     p &copy; copy 2020 Travel Experts Inc

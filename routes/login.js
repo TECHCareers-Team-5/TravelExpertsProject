@@ -29,7 +29,7 @@ router.post("/signup", (req, res, next) => {
         });
       }
       console.log(result);
-      res.render("login", {
+      res.render("/", {
         fname: result.CustFirstName,
         lname: result.CustLastName,
         msg: "Welcome:",

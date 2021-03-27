@@ -1,27 +1,8 @@
-doctype html
-head
-  title Travel Experts
-  meta(name='description' content='This is the description')
-  link(rel='preconnect' href='https://fonts.gstatic.com')
-  link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,500&family=Raleway:ital,wght@0,100;0,400;0,700;1,100&display=swap')
-  link(rel='stylesheet' href='/stylesheets/styles.css')
-header
-  nav
-    ul.navbar
-      li.active
-        a(href='/') HOME
-      li
-        a(href='packages') PACKAGES
-      li
-        a(href='login') LOG IN
-      li
-        a(href='contact') CONTACT
-      ul.navbar-right 
-        li
-          a(href='agent') AGENT LOGIN
+extends template 
+block content
   h1.header TRAVEL EXPERTS
   img(src='Images/Globe blue on transparent.png')
-div
+  div
   section
     .browse-package
       h2 Plan Your Dream Vacation
@@ -42,8 +23,8 @@ div
       | button below!
     a(href='contact')
       button.btn-contact.action CONTACT US
-body
-footer.main-footer
+
+  footer.main-footer
     div
       p
         | &#169 2020 Travel Experts Inc
