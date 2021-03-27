@@ -23,6 +23,7 @@ const packageSchema = new mongoose.Schema({
   PkgEndDate: Date,
   PkgDesc: String,
   PkgBasePrice: Number,
+  PkgChildPrice:Number,
   PkgAgencyCommission: Number,
   Img1: String,
   Img2: String,
