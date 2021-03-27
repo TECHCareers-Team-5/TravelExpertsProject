@@ -3,26 +3,40 @@ block content
 
     h1 Cart
     h2= package.PkgName
-
-
     h2 $ #{package.PkgBasePrice}
+    img(src='/Images/Globe blue on transparent.png' width="100px") 
     div
       br
 
     
-    //-   h2.header.description-header CART
-    //-   .cart-row
-    //-       strong.cart-package.cart-header.cart-column PACKAGE
-    //-       strong.cart-price.cart-header.cart-column PRICE
-    //-       strong.cart-quantity.cart-header.cart-column QUANTITY
-    //-   .cart-row
-    //-       .cart-package.cart-column
-    //-         span.package-name.package.PkgName
-    //-       span.cart-price.cart-column $ #{package.PkgBasePrice}
-    //-       .cart-quantity.cart-column.right
-    //-           input.input-box(name="quantity" type="number", value="0")
-    //-           button.button-cart(role="button") REMOVE
-    //-           button.button-cart(role="button") ADD
-    //-       br
-    //-   .cart-total
-    //-       strong Total
+      h2.header.description-header CHECK OUT
+      .cart-row
+          strong.cart-package.cart-header.cart-column PACKAGE
+          strong.cart-price.cart-header.cart-column PRICE
+          strong.cart-quantity.cart-header.cart-column QUANTITY
+      .cart-row
+          .cart-package.cart-column
+            span.package-name.package.PkgName Adult
+          span.cart-price.cart-column $ #{package.PkgBasePrice}
+          .cart-quantity.cart-column.right
+              input.input-box(name="quantity" type="number", value="0")
+              button.button-cart(role="button") REMOVE
+              button.button-cart(role="button") ADD
+          br
+      div 
+       .cart-row
+          .cart-package.cart-column
+            span.package-name.package.PkgName Child
+          span.cart-price.cart-column $ #{package.PkgBasePrice}
+          .cart-quantity.cart-column.right
+              input.input-box(name="quantity" type="number", value="0")
+              button.button-cart(role="button") REMOVE
+              button.button-cart(role="button") ADD 
+
+
+      .cart-total
+          strong Total 
+          br
+      .btn-purchase 
+        a.button.button-cart.button-cart-purchase(onclick="confirm('Are you sure you want to submit your payment?')")(href='/thankyou/' + package.PackageId)(role="button") PURCHASE
+
