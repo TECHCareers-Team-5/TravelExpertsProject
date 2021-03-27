@@ -10,8 +10,10 @@ const app = express();
 
 // -------------------------------------------------------------
 // For Passport.js
-// require("./my-passport").init(app);
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
+//routers
 var indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const packagesRouter = require("./routes/packages");
@@ -26,8 +28,21 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 //mongo sanitaze for cleaning forms on the way to the data base removing unsafe characters GV
 app.use(mongoSanitze({ replaceWith: "_" }));
+
+//for Passport.js
+app.use(
+  require("express-session")({
+    secret: "k33pITs3cret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);

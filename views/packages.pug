@@ -1,5 +1,10 @@
 extends template 
 block content 
+  div.warning
+      if errors 
+        ul 
+          each error in errors 
+            li= error
 
   each package in packages 
     div.packageBox

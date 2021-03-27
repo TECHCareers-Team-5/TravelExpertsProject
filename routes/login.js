@@ -42,8 +42,8 @@ router.post("/signup", (req, res, next) => {
       res.render("login", {
         fname: result.CustFirstName,
         lname: result.CustLastName,
-        msg: "Welcome:",
-        msg2: "Please login with your credentials",
+        msg: "Welcome ",
+        msg2: ", Please login with your credentials",
       });
     });
   });
