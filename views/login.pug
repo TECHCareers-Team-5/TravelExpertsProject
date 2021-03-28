@@ -3,22 +3,27 @@ block content
 
   h1.header Your Journey Begins Here
   img(src='./Images/Globe blue on transparent.png')
+  div.warning
+      if errors 
+        ul 
+          each error in errors 
+            li= error
   div
     h2 Login
 
     h3 #{msg} #{fname} #{lname} #{msg2}
 
-    form(action='/login' method='POST')
+    form(action='/login/test' method='post')
         div
-            label(for='CustHomePhone') Primary Phone Number
-            hr
-            input(style='width:30%' type='text' name='CustHomePhone' id='CustHomePhone' placeholder='Without "-" ' required='')
+            label(for='username') Enter your user name
+            br       
+            input(style='width:30%' type='text' name='username' id='username' placeholder='lowercase' required='' value= username)
         div
             label(for='password') Password
-            hr
+            br
             input#password(style='width:30%' type='password' name='password' required='' placeholder='Enter Password')
         div
-            button.button(type='submit' style='width:30%' ) SUBMIT
+            button.button(type='submit' style='width:30%' ) Login
     
     h3 New to Travel Experts?
         div 

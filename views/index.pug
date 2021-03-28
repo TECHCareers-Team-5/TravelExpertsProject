@@ -2,7 +2,11 @@ extends template
 block content
   h1.header TRAVEL EXPERTS
   img(src='Images/Globe blue on transparent.png')
-  div
+  //- Display welcome message for succesful login
+  div 
+    if headermsg
+      h2= headermsg
+div
   section
     .browse-package
       h2 Plan Your Dream Vacation
