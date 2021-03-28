@@ -2,7 +2,7 @@ extends template
 block content
 
     h1.header Sign Up as a New User
-    img(src='/Images/Globe blue on transparent.png')
+    img(src='/images/Globe blue on transparent.png')
     div.warning
       if errors 
         ul 
@@ -53,11 +53,11 @@ block content
             br
             input#password(style='width:30%' type='password' name='password' required='' placeholder='Enter Password')
           div
-            label(for='UserName') Password
+            label(for='username') username
             br
-            input#password(style='width:30%' type='UserName' name='UserName' required='' placeholder='username (lowercase)')  
+            input#password(style='width:30%' type='username' name='username' required='' placeholder='username (lowercase)')  
           div
-            label(for='AgentId') Agent ID (Please leave blank if you are not an Agent)
+            label(for='AgentId') Agent ID (Type 0 if you don't have an assigned Agent)
             br
             input(style='width:30%' type='text' name='AgentId' id='AgentId' placeholder='00' value= AgentId)
           button.button(type='submit' style='width:30%') SUBMIT

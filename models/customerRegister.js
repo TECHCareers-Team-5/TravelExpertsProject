@@ -92,7 +92,7 @@ const customersSchema = new mongoose.Schema({
     },
   },
 
-  UserName: {
+  username: {
     type: String,
     required: "Create a unique username with lowercase letters",
     trim: true,
