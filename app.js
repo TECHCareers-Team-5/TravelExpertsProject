@@ -3,14 +3,12 @@ const express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const mongoSanitze = require("express-mongo-sanitize");
 
 const pug = require("pug");
 const app = express();
 
-// -------------------------------------------------------------
-// For Passport.js
-// require("./my-passport").init(app);
-
+//routers
 var indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const packagesRouter = require("./routes/packages");
@@ -25,6 +23,13 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+//mongo sanitaze for cleaning forms on the way to the data base removing unsafe characters GV
+app.use(mongoSanitze({ replaceWith: "_" }));
+
+// travelpassports
+require("./travelpassport").init(app);
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);

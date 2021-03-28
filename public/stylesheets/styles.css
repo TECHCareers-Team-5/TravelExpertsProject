@@ -261,3 +261,9 @@ input {
 .hidden {
   display: none;
 }
+
+.warning {
+  font-size: 1.4rem;
+  background-color: rgba(1, 22, 56, 1);
+  color: rgba(255, 255, 255, 1);
+}
