@@ -28,49 +28,50 @@ module.exports.init = function (app) {
   loginRouter.passport = passport;
 
   //Passport local strategy    COMMENTED OUT to try example from passport.js docs
-  // passport.use(
-  //   new LocalStrategy(function (username, password, done) {
-  //     Customer.findOne({ UserName: username }, function (err, user) {
-  //       if (err) {
-  //         console.log("error from app.js 52");
-  //         return done(err);
-  //       }
-  //       if (!user) {
-  //         console.log("no user account");
-  //         return done(null, false);
-  //       }
-  //       bcrypt.compare(password, user.password, (err, res) => {
-  //         if (res) {
-  //           // successful login
-  //           console.log("succesful login");
-
-  //           return done(null, user);
-  //         } else {
-  //           console.log("passwords dont match");
-  //           // passwords don't match
-  //           return done(null, false, { msg: "Incorrect password" });
-  //         }
-  //       });
-  //     });
-  //   })
-  // );
-
   passport.use(
     new LocalStrategy(function (username, password, done) {
       Customer.findOne({ username: username }, function (err, user) {
         if (err) {
+          console.log("error from app.js 52");
           return done(err);
         }
         if (!user) {
-          return done(null, false, { message: "Incorrect username." });
+          console.log("no user account");
+          return done(null, false);
         }
-        if (!user.validPassword(password)) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, user);
+        bcrypt.compare(password, user.password, (err, res) => {
+          if (res) {
+            // successful login
+            console.log("succesful login");
+
+            return done(null, user);
+          } else {
+            console.log("passwords dont match");
+            // passwords don't match
+            return done(null, false, { msg: "Incorrect password" });
+          }
+        });
       });
     })
   );
+
+  // COMMENTED OUT because error message is user.validPassword is not a function
+  // passport.use(
+  //   new LocalStrategy(function (username, password, done) {
+  //     Customer.findOne({ username: username }, function (err, user) {
+  //       if (err) {
+  //         return done(err);
+  //       }
+  //       if (!user) {
+  //         return done(null, false, { message: "Incorrect username." });
+  //       }
+  //       if (!user.validPassword(password)) {
+  //         return done(null, false, { message: "Incorrect password." });
+  //       }
+  //       return done(null, user);
+  //     });
+  //   })
+  // );
 
   passport.serializeUser(function (user, done) {
     done(null, user.id);
@@ -92,8 +93,8 @@ module.exports.init = function (app) {
   // }
   // );
 
-  app.use(passport.initialize());
-  app.use(passport.session());
+  // app.use(passport.initialize()); called earlier
+  // app.use(passport.session()); called earlier
 };
 
 //code I might need later
