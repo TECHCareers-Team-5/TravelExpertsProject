@@ -21,6 +21,10 @@ header
           a(href='agent') AGENT LOGIN
   h1.header TRAVEL EXPERTS
   img(src='Images/Globe blue on transparent.png')
+  //- Display welcome message for succesful login
+  div 
+    if headermsg
+      h2= headermsg
 div
   section
     .browse-package

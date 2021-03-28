@@ -74,17 +74,37 @@ const customersSchema = new mongoose.Schema({
       },
       message: (props) => `${props.value} is not a valid Email address.`,
     },
+    unique: true,
   },
+
   password: {
     type: String,
-    required: "Password is Required",
+    required:
+      "Create a strong password 8 characters long with at least 1 lowercase, 1 uppercase, 1 number",
     trim: true,
+    validate: {
+      validator: function (v) {
+        return /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/.test(
+          v
+        );
+      },
+      message: `Passwords: 1 lowercase letter, 1 uppercase letter, 1 number, and be at least 8 characters long`,
+    },
+  },
+
+  username: {
+    type: String,
+    required: "Create a unique username with lowercase letters",
+    trim: true,
+    unique: "Create a unique username with lowercase letters",
+    lowercase: true,
   },
 
   AgentId: {
     type: Number,
   },
 });
-
+// require unique validator
+customersSchema.plugin(uniqueValidator);
 // create a model Customers useing customersSchema
 module.exports.Customer = mongoose.model("Customer", customersSchema);
