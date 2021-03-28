@@ -4,11 +4,10 @@ block content
     h1 Cart
     h2= package.PkgName
     h2 $ #{package.PkgBasePrice}
-    img(src='/Images/Globe blue on transparent.png' width="100px") 
+    img(src='/Images/Globe blue on transparent.png' width="100px")
+    
     div
       br
-
-    
       h2.header.description-header CHECK OUT
       .cart-row
           strong.cart-package.cart-header.cart-column PACKAGE
@@ -38,5 +37,5 @@ block content
           strong Total 
           br
       .btn-purchase 
-        a.button.button-cart.button-cart-purchase(onclick="confirm('Are you sure you want to submit your payment?')")(href='/thankyou/' + package.PackageId)(role="button") PURCHASE
+        a.button.button-cart.button-cart-purchase(onclick="confirm('Are you sure you want to submit your payment?')")(href='/packages/' + package.PackageId + '/thankyou/')(role="button") PURCHASE
 
