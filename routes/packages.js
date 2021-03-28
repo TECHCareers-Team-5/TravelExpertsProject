@@ -42,7 +42,7 @@ router.get("/:cart/thankyou", (req, res, next) => {
   const pkgId = req.params.cart;
   const query = { PackageId: pkgId };
   console.log(query);
-  console.log(cart);
+  console.log(pkgId);
   Package.findOne(query, (err, package) => {
     if (err) {
       console.log(err);
@@ -51,5 +51,6 @@ router.get("/:cart/thankyou", (req, res, next) => {
     res.render("thankyou", { package });
   });
 });
+
 
 module.exports = router;
