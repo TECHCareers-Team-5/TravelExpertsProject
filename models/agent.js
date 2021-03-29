@@ -17,6 +17,11 @@ db.once("open", function () {
 });
 
 const agentSchema = new mongoose.Schema({
+  // username: {
+  //   type: String,
+  //   trim: true,
+  // },
+
   AgtEmail: {
     type: String,
     trim: true,

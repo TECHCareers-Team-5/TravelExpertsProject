@@ -10,13 +10,18 @@ router.get("/", (req, res, next) => {
   res.render("agent", { title: "Travel Expert | Agent Login" });
 });
 
+router.get("/", function (req, res, next) {
+  res.render("agentdashboard", { title: "Travel Expert | Agent Dashboard" });
+});
+
 router.post(
-  "/agent",
-  passport.authenticate("local", {
+  "/login",
+  passport.authenticate("agent", {
     successRedirect: "/agentdashboard",
     failureRedirect: "/agent",
   })
 );
+
 // from passportjs.org
 
 // router.get("/signup", (req, res, next) => {
