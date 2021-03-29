@@ -1,4 +1,4 @@
-extends packtemplate 
+pmextends packtemplate 
 block content 
 
     h1 Cart
@@ -13,22 +13,23 @@ block content
           strong.cart-package.cart-header.cart-column PACKAGE
           strong.cart-price.cart-header.cart-column PRICE
           strong.cart-quantity.cart-header.cart-column QUANTITY
+          br
+          br
       .cart-row
           .cart-package.cart-column
             span.package-name.package.PkgName Adult
           span.cart-price.cart-column $ #{package.PkgBasePrice}
           .cart-quantity.cart-column.right
-              input.input-box(name="quantity" type="number", value="0")
+              input.input-box(name="quantity" type="number", min=0, value="0")
               button.button-cart(role="button") REMOVE
               button.button-cart(role="button") ADD
           br
-      div 
-       .cart-row
+      .cart-row
           .cart-package.cart-column
             span.package-name.package.PkgName Child
           span.cart-price.cart-column $ #{package.PkgChildPrice}
           .cart-quantity.cart-column.right
-              input.input-box(name="quantity" type="number", value="0")
+              input.input-box(name="quantity" type="number", min=0, value="0")
               button.button-cart(role="button") REMOVE
               button.button-cart(role="button") ADD 
 
