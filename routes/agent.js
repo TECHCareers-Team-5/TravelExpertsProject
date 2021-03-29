@@ -7,7 +7,7 @@ const local = require("passport-local");
 
 /* GET users listing. */
 router.get("/", (req, res) => {
-  res.render("agent", { title: "Agent Login" });
+  res.render("agent", { title: "Travel Expert | Agent Login" });
 });
 
 router.post(
