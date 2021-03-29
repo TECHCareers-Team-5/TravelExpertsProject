@@ -1,4 +1,4 @@
-  var createError = require("http-errors");
+var createError = require("http-errors");
 const express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -12,6 +12,7 @@ const app = express();
 var indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const packagesRouter = require("./routes/packages");
+const agentRouter = require("./routes/agent");
 // const agentRouter = require("./routes/agentrouter");
 // const suppliercontactsRouter = require("./routes/suppliercontacts");
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/packages", packagesRouter);
+app.use("/agent", agentRouter);
 // app.use("/agent", agentRouter);
 // app.use("/suppliercontacts", suppliercontactsRouter);
 
