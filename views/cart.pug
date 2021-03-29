@@ -18,7 +18,7 @@ block content
             span.package-name.package.PkgName Adult
           span.cart-price.cart-column $ #{package.PkgBasePrice}
           .cart-quantity.cart-column.right
-              input.input-box(name="quantity" type="number", value="0")
+              input.input-box(name="quantity" type="number" min="0", value="0")
               button.button-cart(role="button") REMOVE
               button.button-cart(role="button") ADD
           br
@@ -28,7 +28,7 @@ block content
             span.package-name.package.PkgName Child
           span.cart-price.cart-column $ #{package.PkgChildPrice}
           .cart-quantity.cart-column.right
-              input.input-box(name="quantity" type="number", value="0")
+              input.input-box(name="quantity" type="number" min="0", value="0")
               button.button-cart(role="button") REMOVE
               button.button-cart(role="button") ADD 
 
