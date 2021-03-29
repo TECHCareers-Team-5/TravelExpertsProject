@@ -23,11 +23,12 @@ const packageSchema = new mongoose.Schema({
   PkgEndDate: Date,
   PkgDesc: String,
   PkgBasePrice: Number,
-  PkgChildPrice:Number,
+  PkgChildPrice: Number,
   PkgAgencyCommission: Number,
   Img1: String,
   Img2: String,
   Img3: String,
+  LocalAttraction: String,
 });
 
 // create a model Customers useing customersSchema
