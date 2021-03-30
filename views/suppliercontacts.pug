@@ -1,9 +1,8 @@
-extends tempagent 
+extends agenttemp 
 block content
     
       h1="Supplier Company:"
-        each suppliercontact in suppliercontacts
-          ul 
-            ol
-              a(href='/suppliercontacts/' + suppliercontact.SupplierContactId style='font-size: 50%') #{suppliercontact.SupConCompany}
-              hr
+      each suppliercontact in suppliercontacts
+        ul 
+          ol
+            a(href='/suppliercontacts/' + suppliercontact.SupplierContactId style='font-size: 0.3rem%') #{suppliercontact.SupConCompany}
