@@ -17,20 +17,6 @@ db.once("open", function () {
 });
 
 const agentSchema = new mongoose.Schema({
-  // AgentId: {
-  //   type: String,
-  //   trim: true,
-  // },
-
-  // AgtEmail: {
-  //   type: String,
-  //   trim: true,
-  // },
-
-  // password: {
-  //   type: String,
-  //   trim: true,
-  // },
   AgentId: Number,
   AgtFirstName: String,
   AgtLastName: String,

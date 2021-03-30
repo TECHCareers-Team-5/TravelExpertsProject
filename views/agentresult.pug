@@ -1,4 +1,4 @@
-extends packtemplate
+extends agenttemp
 block content
     h1  Search Results 
     
@@ -11,6 +11,12 @@ block content
             p=result.CustHomePhone
             strong Email 
             p=result.CustEmail
+        div 
+            h3 Next Steps
+               a.button(href='/agent/' + result.CustomerId ) Delete This Customer
+            div 
+                a.button(href='/agent/create/' ) New Customer
+        
 
     else if commission
         h2 #{commission.AgtFirstName} #{commission.AgtLastName} 

@@ -19,6 +19,8 @@ db.once("open", function () {
 const customersSchema = new mongoose.Schema({
   CustomerId: {
     type: Number,
+    require: "A Unique ID number is required, try again",
+    unique: "A Unique ID number is required, try again",
   },
 
   CustFirstName: {
