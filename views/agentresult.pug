@@ -7,10 +7,11 @@ block content
         div
             p #{result.CustAddress}
             p #{result.CustCity}, #{result.CustProv} 
-            p Home Phone 
-                p=result.CustHomePhone
-            p Email 
-                p=result.CustEmail
+            p Home Phone: #{result.CustHomePhone} 
+
+            p Email: #{result.CustEmail}
+            p CustID: #{result.CustomerId} 
+
         
 
     else if commission

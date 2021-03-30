@@ -4,6 +4,12 @@ block content
     img(src='/images/Globe blue on transparent.png') 
 
     h2 #{msg} #{fname} #{lname}
+    
+    h2        
+     a(href='/suppliercontacts') Complete List of Suppliers
+
+    img(src='/images/Globe blue on transparent.png' width="60px") 
+
 
     h2 Search by Customer Email (unique identifier)
      form(action='/agent/search' method='POST')
@@ -14,14 +20,11 @@ block content
             a(href='/agent/create/' )
                 button.button(type='button' style='width:30%') CREATE NEW CUSTOMER
 
-    img(src='/images/Globe blue on transparent.png' width="60px") 
 
-    h2        
-     a(href='/suppliercontacts') Complete List of Suppliers
 
     img(src='/images/Globe blue on transparent.png' width="60px")
 
-    h3 Find Agent Commission 
+    h2 Find Agent Commission 
      form(action='/agent/commission' method='POST')
         div
             input(style='width:30%' type='text' name='AgentId' id='AgentId' required='' placeholder='AgentId' value= AgentId)
