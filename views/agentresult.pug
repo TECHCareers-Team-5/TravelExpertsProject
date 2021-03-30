@@ -12,7 +12,9 @@ block content
             strong Email 
             p=result.CustEmail
 
-    else if comission
-        h2 #{comission.AgtFirstName} #{comission.AgtLastName} Agent ID: #{comission.AgentId} This Months Commission: $ #{comission.Commision}
+    else if commission
+        h2 #{commission.AgtFirstName} #{commission.AgtLastName} 
+            p Agent ID: #{commission.AgentId} 
+            p This Months Comission: $ #{commission.Commission}
     else
         h2 No Results Found

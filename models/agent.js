@@ -38,8 +38,8 @@ const agentSchema = new mongoose.Schema({
   AgtEmail: String,
   AgtPosition: String,
   AgencyId: String,
-  Commision: Number,
   password: String,
+  Commission: Number,
 });
 
 // create a model Agents useing agentSchema

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const Agent = require("../models/agent");
+const { Agent } = require("../models/agent");
 const passport = require("passport");
 const local = require("passport-local");
 const { Customer } = require("../models/customerRegister");
@@ -37,18 +37,18 @@ router.post("/search", (req, res, next) => {
   });
 });
 
-router.post("/commision", (req, res, next) => {
+router.post("/commission", (req, res, next) => {
   const agentId = req.body.AgentId;
   const query = { AgentId: agentId };
   console.log(query);
   console.log(agentId);
-  Agent.findOne(query, (err, comission) => {
+  Agent.findOne(query, (err, commission) => {
     if (err) {
       console.log(err);
       next(err);
     }
-    res.render("agentresult", { comission });
-    console.log(result.Commision);
+    res.render("agentresult", { commission });
+    console.log(commission.Commission);
   });
 });
 // from passportjs.org
