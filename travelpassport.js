@@ -21,6 +21,7 @@ module.exports.init = function (app) {
 
   // require Customer Schema
   const { Customer } = require("./models/customerRegister");
+  const { Agent } = require("./models/agent");
   const { Passport } = require("passport");
   const bcrypt = require("bcryptjs");
 
@@ -29,8 +30,39 @@ module.exports.init = function (app) {
 
   //Passport local strategy    COMMENTED OUT to try example from passport.js docs
   passport.use(
+    "customer",
     new LocalStrategy(function (username, password, done) {
       Customer.findOne({ username: username }, function (err, user) {
+        if (err) {
+          console.log("error from app.js 52");
+          return done(err);
+        }
+        if (!user) {
+          console.log("no user account");
+          return done(null, false);
+        }
+        bcrypt.compare(password, user.password, (err, res) => {
+          if (res) {
+            // successful login
+            console.log("succesful login");
+
+            return done(null, user);
+          } else {
+            console.log("passwords dont match");
+            // passwords don't match
+            return done(null, false, { msg: "Incorrect password" });
+          }
+        });
+      });
+    })
+  );
+
+  passport.use(
+    "agent",
+    new LocalStrategy(function (username, password, done) {
+      console.log("Username and password", username, password);
+      Agent.findOne({ AgtEmail: username }, function (err, user) {
+        console.log(user);
         if (err) {
           console.log("error from app.js 52");
           return done(err);
@@ -74,13 +106,25 @@ module.exports.init = function (app) {
   // );
 
   passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    let userPrototype = Object.getPrototypeOf(user);
+    if (userPrototype === Customer.prototype) {
+      user.userType = "Customer";
+    } else {
+      user.userType = "Agent";
+    }
+    done(null, { id: user.id, userType: user.userType });
   });
 
-  passport.deserializeUser(function (id, done) {
-    Customer.findById(id, function (err, user) {
-      done(err, user);
-    });
+  passport.deserializeUser(function (userObject, done) {
+    if (userObject.userType === "Customer") {
+      Customer.findById(userObject.id, function (err, user) {
+        done(err, user);
+      });
+    } else {
+      Agent.findById(userObject.id, function (err, user) {
+        done(err, user);
+      });
+    }
   });
 
   // app.post(

@@ -12,7 +12,7 @@ router.get("/", (req, res, next) => {
 
 router.post(
   "/test",
-  passport.authenticate("local", {
+  passport.authenticate("customer", {
     successRedirect: "/",
     failureRedirect: "/login",
   })
@@ -50,7 +50,7 @@ router.post("/signup", (req, res, next) => {
       }
       // Welcome message for succesful account creation GV
       console.log(result);
-      res.render("/", {
+      res.render("login", {
         fname: result.CustFirstName,
         lname: result.CustLastName,
         msg: "Welcome ",

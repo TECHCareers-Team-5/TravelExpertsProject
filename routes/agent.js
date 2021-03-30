@@ -1,22 +1,27 @@
 var express = require("express");
 var router = express.Router();
 const bcrypt = require("bcryptjs");
-const { Agent } = require("../models/agent");
+const Agent = require("../models/agent");
 const passport = require("passport");
 const local = require("passport-local");
 
 /* GET users listing. */
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   res.render("agent", { title: "Travel Expert | Agent Login" });
 });
 
+router.get("/", function (req, res, next) {
+  res.render("agentdashboard", { title: "Travel Expert | Agent Dashboard" });
+});
+
 router.post(
-  "/test",
-  passport.authenticate("local", {
-    successRedirect: "/",
+  "/login",
+  passport.authenticate("agent", {
+    successRedirect: "/agentdashboard",
     failureRedirect: "/agent",
   })
 );
+
 // from passportjs.org
 
 // router.get("/signup", (req, res, next) => {

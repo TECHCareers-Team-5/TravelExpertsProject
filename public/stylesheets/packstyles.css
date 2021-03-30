@@ -58,18 +58,20 @@
 }
 
 .input-box {
-  width: 75px;
+  width: 90px;
   height: 10px;
   margin-right: 25px;
+  font-size: 20px;
 }
 
 .cart-total {
   text-align: end;
+  font-size: 25px;
   padding-right: 45px;
 }
 
-.package-name {
-  font-size: 25px;
+.cart-row {
+  font-size: 20px;
   font-weight: bold;
-  margin-right: 55px;
+  margin-right: 0px;
 }

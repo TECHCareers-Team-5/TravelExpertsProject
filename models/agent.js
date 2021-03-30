@@ -17,51 +17,18 @@ db.once("open", function () {
 });
 
 const agentSchema = new mongoose.Schema({
-  AgentId: {
-    type: Number,
-    required: "ID is required",
-    trim: true,
-  },
-
-  AgtMiddleInitial: {
-    type: String,
-    trim: true,
-  },
-
-  AgtFirstName: {
-    type: String,
-    required: "Last name is required",
-    trim: true,
-  },
-
-  AgtLastName: {
-    type: String,
-    required: "Last name is required",
-    trim: true,
-  },
-
-  AgtBusPhone: {
-    type: String,
-    trim: true,
-  },
+  // username: {
+  //   type: String,
+  //   trim: true,
+  // },
 
   AgtEmail: {
     type: String,
     trim: true,
   },
 
-  AgtPosition: {
+  password: {
     type: String,
-    trim: true,
-  },
-
-  AgencyId: {
-    type: Number,
-    trim: true,
-  },
-
-  AgtCommission: {
-    type: Number,
     trim: true,
   },
 });
