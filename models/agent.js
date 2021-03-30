@@ -1,4 +1,4 @@
-// Author - Ping
+// Author - Ping, Grant (updated Schema)
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
@@ -17,20 +17,29 @@ db.once("open", function () {
 });
 
 const agentSchema = new mongoose.Schema({
-  // username: {
+  // AgentId: {
   //   type: String,
   //   trim: true,
   // },
 
-  AgtEmail: {
-    type: String,
-    trim: true,
-  },
+  // AgtEmail: {
+  //   type: String,
+  //   trim: true,
+  // },
 
-  password: {
-    type: String,
-    trim: true,
-  },
+  // password: {
+  //   type: String,
+  //   trim: true,
+  // },
+  AgentId: Number,
+  AgtFirstName: String,
+  AgtLastName: String,
+  AgtBusPhone: String,
+  AgtEmail: String,
+  AgtPosition: String,
+  AgencyId: String,
+  Commision: Number,
+  password: String,
 });
 
 // create a model Agents useing agentSchema

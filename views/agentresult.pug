@@ -1,0 +1,18 @@
+extends packtemplate
+block content
+    h1  Search Results 
+    
+    if result 
+        h2 #{result.CustFirstName} #{result.CustLastName} 
+        div
+            p #{result.CustAddress}
+            p #{result.CustCity}, #{result.CustProv} 
+            strong Home Phone 
+            p=result.CustHomePhone
+            strong Email 
+            p=result.CustEmail
+
+    else if comission
+        h2 #{comission.AgtFirstName} #{comission.AgtLastName} Agent ID: #{comission.AgentId} This Months Commission: $ #{comission.Commision}
+    else
+        h2 No Results Found

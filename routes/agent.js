@@ -4,24 +4,53 @@ const bcrypt = require("bcryptjs");
 const Agent = require("../models/agent");
 const passport = require("passport");
 const local = require("passport-local");
+const { Customer } = require("../models/customerRegister");
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
   res.render("agent", { title: "Travel Expert | Agent Login" });
 });
 
-router.get("/", function (req, res, next) {
-  res.render("agentdashboard", { title: "Travel Expert | Agent Dashboard" });
-});
-
 router.post(
   "/login",
   passport.authenticate("agent", {
-    successRedirect: "/agentdashboard",
+    successRedirect: "/agent/agentdashboard",
     failureRedirect: "/agent",
   })
 );
 
+router.get("/agentdashboard", (req, res, next) => {
+  res.render("agentdashboard", { title: "Travel Expert | Agent Dashboard" });
+});
+
+router.post("/search", (req, res, next) => {
+  const lname = req.body.CustLastName;
+  const query = { CustLastName: lname };
+  console.log(query);
+  console.log(lname);
+  Customer.findOne(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      next(err);
+    }
+    res.render("agentresult", { result });
+  });
+});
+
+router.post("/commision", (req, res, next) => {
+  const agentId = req.body.AgentId;
+  const query = { AgentId: agentId };
+  console.log(query);
+  console.log(agentId);
+  Agent.findOne(query, (err, comission) => {
+    if (err) {
+      console.log(err);
+      next(err);
+    }
+    res.render("agentresult", { comission });
+    console.log(result.Commision);
+  });
+});
 // from passportjs.org
 
 // router.get("/signup", (req, res, next) => {
@@ -56,9 +85,9 @@ router.post(
 //       }
 //       // Welcome message for succesful account creation GV
 //       console.log(result);
-//       res.render("/", {
-//         fname: result.CustFirstName,
-//         lname: result.CustLastName,
+// res.render("/", {
+//   fname: result.CustFirstName,
+//   lname: result.CustLastName,
 //         msg: "Welcome ",
 //         msg2: ", Please login with your credentials",
 //       });
