@@ -24,10 +24,10 @@ router.get("/agentdashboard", (req, res, next) => {
 });
 
 router.post("/search", (req, res, next) => {
-  const lname = req.body.CustLastName;
-  const query = { CustLastName: lname };
+  const email = req.body.CustEmail;
+  const query = { CustEmail: email };
   console.log(query);
-  console.log(lname);
+  console.log(email);
   Customer.findOne(query, (err, result) => {
     if (err) {
       console.log(err);
@@ -51,48 +51,63 @@ router.post("/commission", (req, res, next) => {
     console.log(commission.Commission);
   });
 });
-// from passportjs.org
 
-// router.get("/signup", (req, res, next) => {
-//   res.render("loginsignup", { title: "Sign Up" });
-// });
+router.get("/create", (req, res, next) => {
+  res.render("agentcreate", {
+    title: "Travel Expert | Create Customer Record",
+  });
+});
 
-// router.post("/signup", (req, res, next) => {
-//   console.log("signup endpoint");
-//   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-//     if (err) throw err;
-//     // Replace the plain password with the hashed password
-//     req.body.password = hashedPassword;
-//     const newCustomer = new Customer(req.body);
-//     newCustomer.save((err, result) => {
-//       if (err) {
-//         const errorArray = [];
-//         const errorKeys = Object.keys(err.errors);
-//         errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
-//         return res.render("loginsignup", {
-//           errors: errorArray,
-//           CustFirstName: req.body.CustFirstName,
-//           CustLastName: req.body.CustLastName,
-//           CustAddress: req.body.CustAddress,
-//           CustCity: req.body.CustCity,
-//           CustProv: req.body.CustProv,
-//           CustPostal: req.body.CustPostal,
-//           CustHomePhone: req.body.CustHomePhone,
-//           CustBusPhone: req.body.CustBusPhone,
-//           CustEmail: req.body.CustEmail,
-//           AgentId: req.body.AgentId,
-//         });
-//       }
-//       // Welcome message for succesful account creation GV
-//       console.log(result);
-// res.render("/", {
-//   fname: result.CustFirstName,
-//   lname: result.CustLastName,
-//         msg: "Welcome ",
-//         msg2: ", Please login with your credentials",
-//       });
-//     });
-//   });
-// });
+router.post("/create", (req, res, next) => {
+  console.log("create endpoint");
+  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+    if (err) throw err;
+    // Replace the plain password with the hashed password
+    req.body.password = hashedPassword;
+    const newCustomer = new Customer(req.body);
+    newCustomer.save((err, result) => {
+      if (err) {
+        const errorArray = [];
+        const errorKeys = Object.keys(err.errors);
+        errorKeys.forEach((key) => errorArray.push(err.errors[key].message));
+        return res.render("agentcreate", {
+          errors: errorArray,
+          CustFirstName: req.body.CustFirstName,
+          CustLastName: req.body.CustLastName,
+          CustAddress: req.body.CustAddress,
+          CustCity: req.body.CustCity,
+          CustProv: req.body.CustProv,
+          CustPostal: req.body.CustPostal,
+          CustHomePhone: req.body.CustHomePhone,
+          CustBusPhone: req.body.CustBusPhone,
+          CustEmail: req.body.CustEmail,
+          CustomerId: req.body.CustomerId,
+          AgentId: req.body.AgentId,
+        });
+      }
+      // Welcome message for succesful account creation GV
+      console.log(result);
+      res.render("agentdashboard", {
+        fname: result.CustFirstName,
+        lname: result.CustLastName,
+        msg: "New Customer Created:",
+      });
+    });
+  });
+});
+
+router.get("/:delete", (req, res, next) => {
+  const id = req.params.delete;
+  const query = { CustomerId: id };
+  Customer.deleteOne(function (err, query) {
+    if (err) return handleError(err);
+    Customer.findById(query, function (err, query) {
+      console.log(query);
+    });
+  });
+  res.render("agentdashboard", {
+    msg: "This Customer Is Deleted:",
+  });
+});
 
 module.exports = router;

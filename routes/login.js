@@ -45,6 +45,7 @@ router.post("/signup", (req, res, next) => {
           CustHomePhone: req.body.CustHomePhone,
           CustBusPhone: req.body.CustBusPhone,
           CustEmail: req.body.CustEmail,
+          CustomerId: req.body.CustomerId,
           AgentId: req.body.AgentId,
         });
       }
