@@ -13,8 +13,7 @@ var indexRouter = require("./routes/index");
 const loginRouter = require("./routes/login");
 const packagesRouter = require("./routes/packages");
 const agentRouter = require("./routes/agent");
-// const agentRouter = require("./routes/agentrouter");
-// const suppliercontactsRouter = require("./routes/suppliercontacts");
+const suppliercontactsRouter = require("./routes/suppliercontacts");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -31,15 +30,13 @@ app.use(mongoSanitze({ replaceWith: "_" }));
 // travelpassports
 require("./travelpassport").init(app);
 
-
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/packages", packagesRouter);
 app.use("/agent", agentRouter);
-// app.use("/suppliercontacts", suppliercontactsRouter);
+app.use("/suppliercontacts", suppliercontactsRouter);
 
 app.use((req, res, next) => {
   res.status(404).render("error");

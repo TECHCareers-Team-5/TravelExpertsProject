@@ -1,0 +1,9 @@
+extends template 
+block content
+    
+      h1="Supplier Company:"
+        each suppliercontact in suppliercontacts
+          ul 
+            ol
+              a(href='/suppliercontacts/' + suppliercontact.SupplierContactId style='font-size: 50%') #{suppliercontact.SupConCompany}
+              hr
