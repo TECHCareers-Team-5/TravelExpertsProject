@@ -7,20 +7,15 @@ block content
         div
             p #{result.CustAddress}
             p #{result.CustCity}, #{result.CustProv} 
-            strong Home Phone 
-            p=result.CustHomePhone
-            strong Email 
-            p=result.CustEmail
-        div 
-            h3 Next Steps
-               a.button(href='/agent/' + result.CustomerId ) Delete This Customer
-            div 
-                a.button(href='/agent/create/' ) New Customer
+            p Home Phone 
+                p=result.CustHomePhone
+            p Email 
+                p=result.CustEmail
         
 
     else if commission
         h2 #{commission.AgtFirstName} #{commission.AgtLastName} 
-            p Agent ID: #{commission.AgentId} 
-            p This Months Comission: $ #{commission.Commission}
+        p Agent ID: #{commission.AgentId} 
+        h3 This Months Comission: $ #{commission.Commission}
     else
         h2 No Results Found

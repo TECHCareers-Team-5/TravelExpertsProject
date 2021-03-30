@@ -1,6 +1,7 @@
 extends agenttemp
 block content
-    h1  Agent Search Dashboard 
+    h1  Agent Search Dashboard
+    img(src='/images/Globe blue on transparent.png') 
 
     h2 #{msg} #{fname} #{lname}
 
@@ -13,13 +14,17 @@ block content
             a(href='/agent/create/' )
                 button.button(type='button' style='width:30%') CREATE NEW CUSTOMER
 
+    img(src='/images/Globe blue on transparent.png' width="60px") 
 
-    h2 Find Agent Commission 
+    h2        
+     a(href='/suppliercontacts') Complete List of Suppliers
+
+    img(src='/images/Globe blue on transparent.png' width="60px")
+
+    h3 Find Agent Commission 
      form(action='/agent/commission' method='POST')
         div
             input(style='width:30%' type='text' name='AgentId' id='AgentId' required='' placeholder='AgentId' value= AgentId)
             button.button(type='submit' style='width:30%') SUBMIT   
 
-    h2        
-     a(href='/suppliercontacts') All Suppliers List
      
