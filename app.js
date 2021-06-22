@@ -4,9 +4,14 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoSanitze = require("express-mongo-sanitize");
+const compression = require('compression');
+const helmet = require('helmet');
 
 const pug = require("pug");
 const app = express();
+
+app.use(helmet()); // protects app from well known vulnerabilities
+app.use(compression()); //compresses all routes
 
 //routers
 var indexRouter = require("./routes/index");
