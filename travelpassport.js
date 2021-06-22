@@ -4,6 +4,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const loginRouter = require("./routes/login");
 var session = require("express-session");
 var bodyParser = require("body-parser");
+const compression = require('compression')
+const helmet = require('helmet');
 
 module.exports.init = function (app) {
   // app.use(
@@ -13,6 +15,8 @@ module.exports.init = function (app) {
   //     saveUninitialized: true,
   //   })
   // );
+  app.use(helmet()); // protects app from well known vulnerabilities
+  app.use(compression()); //compresses all routes
   app.use(express.static("public"));
   app.use(session({ secret: "k33pITs3cret" }));
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -126,21 +130,5 @@ module.exports.init = function (app) {
       });
     }
   });
-
-  // app.post(
-  //   "/login",
-  //   passport.authenticate("local", { failureRedirect: "/login" }),
-  // function (req, res) {
-  //   const headermsg = `Welcome ${Customer.CustFirstName} ${Customer.CustLastName}.
-  //     You are now logged in.`;
-  //   res.redirect("/?headermsg=" + headermsg);
-  // }
-  // );
-
-  // app.use(passport.initialize()); called earlier
-  // app.use(passport.session()); called earlier
 };
 
-//code I might need later
-// const headermsg = `Welcome ${Customer.CustFirstName} ${Customer.CustLastName}.
-//         You are now logged in.`
