@@ -4,8 +4,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const loginRouter = require("./routes/login");
 var session = require("express-session");
 var bodyParser = require("body-parser");
-const compression = require('compression')
-const helmet = require('helmet');
+
 
 module.exports.init = function (app) {
   // app.use(
@@ -15,8 +14,7 @@ module.exports.init = function (app) {
   //     saveUninitialized: true,
   //   })
   // );
-  app.use(helmet()); // protects app from well known vulnerabilities
-  app.use(compression()); //compresses all routes
+
   app.use(express.static("public"));
   app.use(session({ secret: "k33pITs3cret" }));
   app.use(bodyParser.urlencoded({ extended: false }));
